@@ -368,7 +368,7 @@ extern "C" {
     return 1;
   }
 
-  switch_status_t fork_init() {
+  extern "C" switch_status_t fork_init(void) {
     switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_NOTICE, "mod_audio_fork: audio buffer (in secs):    %d secs\n", nAudioBufferSecs);
     switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_NOTICE, "mod_audio_fork: sub-protocol:              %s\n", mySubProtocolName);
     switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_NOTICE, "mod_audio_fork: lws service threads:       %d\n", nServiceThreads);
@@ -379,7 +379,7 @@ extern "C" {
    return SWITCH_STATUS_SUCCESS;
   }
 
-  switch_status_t fork_cleanup() {
+  extern "C" switch_status_t fork_cleanup(void) {
     bool cleanup = false;
     cleanup = AudioPipe::deinitialize();
     if (cleanup == true) {
@@ -617,4 +617,3 @@ extern "C" {
   }
 
 }
-
